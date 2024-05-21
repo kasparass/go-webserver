@@ -53,3 +53,11 @@ $   pass
 ```shell
 $   SELECT * FROM snippets;
 ```
+
+### GO Commands
+
+#### Start server
+
+```shell
+$   go run ./cmd/web
+```

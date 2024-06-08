@@ -7,10 +7,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/kasparass/lets-go/internal/models"
 
-	_ "github.com/go-sql-driver/mysql" // New import
+	"github.com/alexedwards/scs/mysqlstore" // New import
+	"github.com/alexedwards/scs/v2"         // New import
+	"github.com/go-playground/form/v4"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Define an application struct to hold the application-wide dependencies for the
@@ -20,8 +24,10 @@ type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
 
-	snippets      *models.SnippetModel
-	templateCache map[string]*template.Template
+	snippets       *models.SnippetModel
+	templateCache  map[string]*template.Template
+	formDecoder    *form.Decoder
+	sessionManager *scs.SessionManager
 }
 
 func main() {
@@ -52,12 +58,25 @@ func main() {
 		errorLog.Fatal(err)
 	}
 
+	formDecoder := form.NewDecoder()
+
+	sessionManager := scs.New()
+	sessionManager.Store = mysqlstore.New(db)
+	sessionManager.Lifetime = 12 * time.Hour
+	// Make sure that the Secure attribute is set on our session cookies.
+	// Setting this means that the cookie will only be sent by a user's web
+	// browser when a HTTPS connection is being used (and won't be sent over an
+	// unsecure HTTP connection).
+	sessionManager.Cookie.Secure = true
+
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  infoLog,
 
-		snippets:      &models.SnippetModel{DB: db},
-		templateCache: templateCache,
+		snippets:       &models.SnippetModel{DB: db},
+		templateCache:  templateCache,
+		formDecoder:    formDecoder,
+		sessionManager: sessionManager,
 	}
 
 	srv := &http.Server{
@@ -70,7 +89,7 @@ func main() {
 	// Because the err variable is now already declared in the code above, we need
 	// to use the assignment operator = here, instead of the := 'declare and assign'
 	// operator.
-	err = srv.ListenAndServe()
+	err = srv.ListenAndServeTLS("./tls/cert.pem", "./tls/key.pem")
 	errorLog.Fatal(err)
 }
 

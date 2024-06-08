@@ -61,3 +61,11 @@ $   SELECT * FROM snippets;
 ```shell
 $   go run ./cmd/web
 ```
+
+#### To generate TLS self-signed certificate
+
+adjust based on go directory location
+
+```shell
+$   go run /c/'Program Files'/Go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=localhost
+```

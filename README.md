@@ -62,6 +62,30 @@ $   SELECT * FROM snippets;
 $   go run ./cmd/web
 ```
 
+#### Run all tests
+
+```shell
+$   go test ./...
+```
+
+#### Run specific test
+
+```shell
+$   go test -v -run="^TestPing$" ./cmd/web/
+```
+
+#### Run specific sub-test
+
+```shell
+$   go test -v -run="^TestHumanDate$/^UTC$" ./cmd/web
+```
+
+#### Skip specific test and not cache if ran multiple times
+
+```shell
+$   go test -v -skip="^TestHumanDate$" -count=1 ./cmd/web/
+```
+
 #### To generate TLS self-signed certificate
 
 adjust based on go directory location

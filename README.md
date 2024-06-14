@@ -62,10 +62,30 @@ $   SELECT * FROM snippets;
 $   go run ./cmd/web
 ```
 
-#### Run all tests
+#### To generate TLS self-signed certificate
+
+adjust based on go directory location
 
 ```shell
-$   go test ./...
+$   go run /c/'Program Files'/Go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=localhost
+```
+
+#### To build binary and copy existing TLS certificate
+
+```shell
+$   go build -o ./tmp/web ./cmd/web/
+$   cp -r ./tls ./tmp/
+$   cd ./tmp/
+$   ./web
+```
+
+
+### GO Test Commands
+
+#### Run all short tests
+
+```shell
+$   go test -short ./...
 ```
 
 #### Run specific test
@@ -86,19 +106,20 @@ $   go test -v -run="^TestHumanDate$/^UTC$" ./cmd/web
 $   go test -v -skip="^TestHumanDate$" -count=1 ./cmd/web/
 ```
 
-#### To generate TLS self-signed certificate
-
-adjust based on go directory location
+#### Check test coverage
 
 ```shell
-$   go run /c/'Program Files'/Go/src/crypto/tls/generate_cert.go --rsa-bits=2048 --host=localhost
+$   go test -cover ./...
 ```
 
-#### To build binary and copy existing TLS certificate
+#### Save test coverage
 
 ```shell
-$   go build -o ./tmp/web ./cmd/web/
-$   cp -r ./tls ./tmp/
-$   cd ./tmp/
-$   ./web
+$   go test -coverprofile=./tmp/profile.out ./...
+```
+
+#### Read test coverage
+
+```shell
+$   go tool cover -html=/tmp/profile.out
 ```

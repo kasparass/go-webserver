@@ -21,16 +21,12 @@ func TestPing(t *testing.T) {
 }
 
 func TestSnippetView(t *testing.T) {
-	// Create a new instance of our application struct which uses the mocked
-	// dependencies.
+
 	app := newTestApplication(t)
 
-	// Establish a new test server for running end-to-end tests.
 	ts := newTestServer(t, app.routes())
 	defer ts.Close()
 
-	// Set up some table-driven tests to check the responses sent by our
-	// application for different URLs.
 	tests := []struct {
 		name     string
 		urlPath  string

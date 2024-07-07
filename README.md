@@ -21,7 +21,7 @@ $   docker pull mysql:latest
 #### Creating instance with data volume attached
 
 ```shell
- $  docker run --name lets-go-mysql -p 33060:3306 -v /c/Development/TutorialsDev/lets-go/mysql/:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+ $  docker run --name lets-go-mysql -p 33060:3306 -v lets-go-mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 ```
 
 #### Docker container start

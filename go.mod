@@ -1,4 +1,4 @@
-module github.com/kasparass/lets-go
+module github.com/kasparass/go-webserver
 
 go 1.21.5
 

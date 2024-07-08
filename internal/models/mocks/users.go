@@ -1,7 +1,7 @@
 package mocks
 
 import (
-	"github.com/kasparass/lets-go/internal/models"
+	"github.com/kasparass/go-webserver/internal/models"
 )
 
 type UserModel struct{}

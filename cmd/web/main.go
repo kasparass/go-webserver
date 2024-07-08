@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/kasparass/lets-go/internal/models"
+	"github.com/kasparass/go-webserver/internal/models"
 
 	"github.com/alexedwards/scs/mysqlstore"
 	"github.com/alexedwards/scs/v2"

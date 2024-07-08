@@ -3,7 +3,7 @@ package models
 import (
 	"testing"
 
-	"github.com/kasparass/lets-go/internal/assert"
+	"github.com/kasparass/go-webserver/internal/assert"
 )
 
 func TestUserModelExists(t *testing.T) {

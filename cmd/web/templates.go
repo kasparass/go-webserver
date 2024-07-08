@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/kasparass/lets-go/internal/models"
-	"github.com/kasparass/lets-go/ui"
+	"github.com/kasparass/go-webserver/internal/models"
+	"github.com/kasparass/go-webserver/ui"
 )
 
 type templateData struct {

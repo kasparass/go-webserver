@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/kasparass/lets-go/ui"
+	"github.com/kasparass/go-webserver/ui"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/justinas/alice"

@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/kasparass/lets-go/internal/assert"
+	"github.com/kasparass/go-webserver/internal/assert"
 )
 
 func TestPing(t *testing.T) {

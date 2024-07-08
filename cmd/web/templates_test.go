@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kasparass/lets-go/internal/assert"
+	"github.com/kasparass/go-webserver/internal/assert"
 )
 
 func TestHumanDate(t *testing.T) {

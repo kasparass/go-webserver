@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/kasparass/lets-go/internal/assert"
+	"github.com/kasparass/go-webserver/internal/assert"
 )
 
 func TestSecureHeaders(t *testing.T) {

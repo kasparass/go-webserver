@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kasparass/lets-go/internal/models/mocks"
+	"github.com/kasparass/go-webserver/internal/models/mocks"
 
 	"github.com/alexedwards/scs/v2"
 	"github.com/go-playground/form/v4"

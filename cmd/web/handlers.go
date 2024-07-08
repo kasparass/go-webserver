@@ -7,8 +7,8 @@ import (
 	"strconv"
 
 	"github.com/julienschmidt/httprouter"
-	"github.com/kasparass/lets-go/internal/models"
-	"github.com/kasparass/lets-go/internal/validator"
+	"github.com/kasparass/go-webserver/internal/models"
+	"github.com/kasparass/go-webserver/internal/validator"
 )
 
 func ping(w http.ResponseWriter, r *http.Request) {
